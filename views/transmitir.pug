@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1(align="center") Placa: #{placa}
+  div(class="row")
+   div(class="column col-md-6")
+    div(class="card" align="center" id="cam1")
+     h4
+      b Camara 1
+     video(id = "video" autoplay="true" style="width: 680px; heigth: 320px;")
+   div(class="column col-md-6")
+    div(class="card" align="center" id="cam2")
+     h4
+      b Camara 2
+     video(id = "video2" autoplay="true" style="width: 680px; heigth: 320px;")
+  input(type="button" value="on" onclick="initRecordAll();")
+  input(type="button" value="off" onclick="stopRecordAll();")
+  script.
+    var vehiculo=!{JSON.stringify(vehiculo)};
+  script(src="/socket.io/socket.io.js")
+  script(src="/javascripts/transmiter.js")

@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+  h1(align="center") #{title}
+  div(class="row")
+    div(class="column col-md-10")
+      div(class="card")
+        div(class="card-header" align="center")
+        div(class="card-body")
+          table(class="table text-center")
+            thead(class="table-dark")
+              tr
+                th(scope="col") Nombre
+                th(scope="col") Apellido
+                th(scope="col") Telefono
+                th(scope="col") Genero
+                th(scope="col") Direccion
+                th(scope="col") CI
+                th(scope="col") estado
+                th(scope="col") Creado en
+            tbody
+              each val in lista
+                tr
+                  td=val.nombre
+                  td #{val.apellido}
+                  td #{val.telefono}
+                  td #{val.genero}
+                  td #{val.direccion}
+                  td #{val.ci}
+                  td #{val.estado}
+                  td #{val.created_at}
+    
+  script(src="/socket.io/socket.io.js")
+  script.
+    var allLista=!{JSON.stringify(lista)};
+  script(src="/javascripts/status.js")

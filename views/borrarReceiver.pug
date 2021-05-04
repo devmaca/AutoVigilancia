@@ -1,0 +1,10 @@
+extends layout
+block content
+  h1= title
+  p Welcome to #{title}
+  img(src="" id="frame" width="500" height="500")
+  img(src="" id="frame2" width="500" height="500")
+  div(id = "logger")
+  script(src="/socket.io/socket.io.js")
+  script(src="/javascripts/receiver.js")
+  input(type="button" value="Subscribe" onclick=" subscribeReceiver();")
