@@ -1,0 +1,45 @@
+extends ../layout
+
+block content
+  -var doc=registro||{};
+  H3 Registro Nuevo Conductor
+  hr.bg-info
+  p.text-danger.small.pt-0.mt-0 *Todos los campos son obligatorios
+  form(id="form" action="/conductor/add" method="POST")
+    input(type="hidden" class="form-control" id="_id" name="_id" placeholder="id" value=doc._id||"")
+    .form-group-row
+      label(for="nombre" class="col-form-label col-sm-2") Nombre
+      .col-sm-auto
+        input(type="text" class="form-control" id="nombre" name="nombre" value=doc.nombre||"" placeholder="Nombre")
+      label(for="apellido" class="col-form-label col-sm-2") Apellido
+      .col-sm-auto
+        input(type="text" class="form-control" id="apellido" name="apellido" value=doc.apellido||"" placeholder="Apellido")
+    .form-group-row
+      label(for="telefono" class="col-form-label col-sm-2") Telefono
+      .col-sm-auto
+        input(type="text" class="form-control" id="telefono" name="telefono" value=doc.telefono||"" placeholder="Telefono")
+    .form-group-row
+      label(for="genero" class="col-form-label col-sm-2") Genero
+      .col-sm-auto
+        select(id="genero" name="genero" class="form-control" value=doc.genero||"")
+          option(value="0") Masculino
+          option(value="1") Femenino
+    .form-group-row
+      label(for="direccion" class="col-form-label col-sm-2") Direccion
+      .col-sm-auto
+        input(type="text" class="form-control" id="direccion" name="direccion" value=doc.direccion||"" placeholder="Direccion") 
+      label(for="ci" class="col-form-label col-sm-2") C.I.
+      .col-sm-auto
+        input(type="text" class="form-control" id="ci" name="ci" placeholder="Cedula Identidad" value=doc.ci||"")
+    .form-group-row
+      label(for="estado" class="col-form-label col-sm-2") Estado
+      .col-sm-auto
+        select(id="estado" name="estado" class="form-control" value=doc.estado||"")
+          option(value="0") Activo
+          option(value="1") Inactivo
+
+    button(type="submit" value="guardar" class="btn btn-success" disabled ) guardar
+    button(type="button" value="guardar" class="btn btn-success" onclick="enviarFormPostAlertas('form')") Guardar con validacion
+    a(href= '/conductor/add' class="btn btn-success ") Borrar
+  script
+    include conductor.js
